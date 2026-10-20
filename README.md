@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PixView
 
 A lightweight image viewer written in C that renders binary PPM (P6) images using SDL2.
@@ -47,16 +48,52 @@ sudo apt install libsdl2-dev
 ```
 
 macOS
+=======
+# Image Viewer
+
+A small C image viewer that reads a binary PPM (`P6`) image from standard input and displays it in an SDL2 window.
+
+## Features
+
+- Reads RGB pixel data from a `P6` PPM stream.
+- Creates a window sized to the input image.
+- Renders the image with SDL2 and keeps the window open until it is closed.
+- Works with files, pipelines, and generated PPM output.
+
+## Requirements
+
+- A C compiler such as GCC or Clang.
+- SDL2 development libraries and headers.
+- A desktop environment capable of opening an SDL2 window.
+
+### Install SDL2
+
+Debian or Ubuntu:
+
+```bash
+sudo apt-get update
+sudo apt-get install build-essential libsdl2-dev
+```
+
+macOS with Homebrew:
+>>>>>>> 7320844 (Rewrite README for Image Viewer)
 
 ```bash
 brew install sdl2
 ```
 
+<<<<<<< HEAD
 ---
+=======
+Windows users can install SDL2 through [MSYS2](https://www.msys2.org/) or download the development libraries from [SDL's website](https://www.libsdl.org/).
+>>>>>>> 7320844 (Rewrite README for Image Viewer)
 
-## Building
+## Build
+
+Compile the viewer from the repository root:
 
 ```bash
+<<<<<<< HEAD
 gcc image_viewer.c -o pixview -lSDL2
 ```
 
@@ -125,3 +162,66 @@ PixView/
 ## License
 
 MIT License.
+=======
+cc iv.c -o iv $(sdl2-config --cflags --libs)
+```
+
+If `sdl2-config` is unavailable, provide SDL2's include and linker flags directly. A typical Linux command is:
+
+```bash
+cc iv.c -o iv -lSDL2
+```
+
+## Usage
+
+Pass a binary PPM image through standard input:
+
+```bash
+./iv < images.ppm
+```
+
+The repository includes `images.ppm` and `flower.ppm` as sample inputs:
+
+```bash
+./iv < flower.ppm
+```
+
+Other tools can be used to generate a PPM stream. For example, with ImageMagick:
+
+```bash
+convert input.jpg ppm:- | ./iv
+```
+
+Close the window to exit the application.
+
+## PPM Input Format
+
+The viewer expects a binary `P6` PPM with this structure:
+
+```text
+P6
+# optional comment
+<width> <height>
+255
+<binary RGB pixel data>
+```
+
+Pixel bytes are read left to right, then top to bottom, as consecutive red, green, and blue values.
+
+## Limitations
+
+- Only binary `P6` PPM data is supported in practice. The magic number is currently read but not validated.
+- The header parser expects the comment and header fields in fixed line positions.
+- The maximum color value is assumed to be `255`.
+- Malformed headers, truncated input, and SDL initialization errors are not reported robustly.
+- Pixels are drawn individually with `SDL_FillRect`, so large images may render slowly.
+- The complete image is read before the window becomes interactive.
+
+## Development Ideas
+
+- Validate the PPM magic number and all header fields.
+- Support comments and whitespace according to the full PPM specification.
+- Handle arbitrary maximum color values and truncated streams.
+- Replace per-pixel surface fills with a texture or direct pixel buffer.
+- Accept an image path as an optional command-line argument.
+>>>>>>> 7320844 (Rewrite README for Image Viewer)
