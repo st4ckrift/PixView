@@ -51,6 +51,11 @@ macOS
 =======
 # Image Viewer
 
+[![Language: C](https://img.shields.io/badge/language-C-A8B9CC.svg?logo=c&logoColor=white)](https://en.wikipedia.org/wiki/C_(programming_language))
+[![Graphics: SDL2](https://img.shields.io/badge/graphics-SDL2-1d3557.svg)](https://www.libsdl.org/)
+[![Platform: Linux](https://img.shields.io/badge/platform-Linux-1793d1.svg?logo=linux&logoColor=white)](https://www.linux.org/)
+[![License: Unlicensed](https://img.shields.io/badge/license-unlicensed-lightgrey.svg)](#license)
+
 A small C image viewer that reads a binary PPM (`P6`) image from standard input and displays it in an SDL2 window.
 
 ## Features
@@ -193,6 +198,19 @@ convert input.jpg ppm:- | ./iv
 ```
 
 Close the window to exit the application.
+
+## Project Layout
+
+| Path | Description |
+| --- | --- |
+| `iv.c` | SDL2 image viewer implementation |
+| `images.ppm` | Sample PPM image |
+| `flower.ppm` | Sample PPM image |
+| `iv` | Prebuilt executable, when present |
+
+## License
+
+No license has been specified for this repository. Treat the source and bundled images as all rights reserved unless the project owner adds licensing terms.
 
 ## PPM Input Format
 
