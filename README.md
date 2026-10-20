@@ -208,10 +208,6 @@ Close the window to exit the application.
 | `flower.ppm` | Sample PPM image |
 | `iv` | Prebuilt executable, when present |
 
-## License
-
-No license has been specified for this repository. Treat the source and bundled images as all rights reserved unless the project owner adds licensing terms.
-
 ## PPM Input Format
 
 The viewer expects a binary `P6` PPM with this structure:
@@ -225,6 +221,10 @@ P6
 ```
 
 Pixel bytes are read left to right, then top to bottom, as consecutive red, green, and blue values.
+
+## License
+
+No license has been specified for this repository. Treat the source and bundled images as all rights reserved unless the project owner adds licensing terms.
 
 ## Limitations
 
